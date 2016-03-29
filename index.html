@@ -47,6 +47,8 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 </script>
 </section>
 
+<section>
+
 <section data-markdown>
 <script type="text/template">
 ## Overview
@@ -62,6 +64,19 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 
 <section data-markdown>
 <script type="text/template">
+## What is TXM?
+* A text analysis tool developed at the ENS Lyon 
+* Designed for linguistic or literary text analysis
+* Indebted to and designed for "textométrie"
+* Based on Unicode and XML, supports TEI
+* Supports linguistic annotation and metadata
+* Using the CQP corpus query processor (from Open Corpus Workbench)
+* Flexible, free, open and in active development
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
 ## Sample text collections
 * 12 British novels by Arthur Conan Doyle
 * Written in two different decades
@@ -69,7 +84,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 </script>
 </section>
 
-
+</section>
 <section>
 
 <section data-markdown>
@@ -81,36 +96,42 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 <section data-markdown>
 <script type="text/template">
 ## Lexicon
-Liste aller Wortformen, die im Korpus vorkommen, alphabetisch oder nach Frequenz sortierbar. Nützlich, um besonders häufige und besonders seltene Wörter festzustellen.
-* Sortierbar nach Alphabet oder Frequenz
+List of all terms (which can be word forms, lemmas, POS, etc.) which appear in the corpus. 
+* Can be sorted alphabetically or by frequency
+* Useful to find most frequent and very rare words
 </script>
 </section>
 
 <section data-markdown>
 <script type="text/template">
 ## Index
-Abfrage der Frequenz einer bestimmten Wortform (oder anderer Suchbegriffe) im Korpus. 
-* Man kann einstellen, welche Information als "pivot" (das im Zentrum stehende Element) angezeigt werden soll: die Wortform, das Lemma, oder das POS-Tag; oder mehrere dieser Informationen.
-* Es werden die Treffer und ihre Frequenz angezeigt; man kann von hier aus weitere Sichten ansteuern (siehe unten)
+Function to find out the frequency of a certain term in the corpus
+* Gives a list of found terms and their frequency
+* It is possible to set the property of the term that should be shown (word, lemma, POS or combination)
+* Important conceptual distinction: property of the query vs. property displayed
+* Further tools can be started from here
 </script>
 </section>
 
 <section data-markdown>
 <script type="text/template">
 ## Concordance
-Suche nach dem Kontext einer bestimmten Wortform (oder anderer Suchbegriffe). 
-* Hier wird das Suchwort im Kontext angezeigt, also mit einigen Wörtern, die davor stehen und die folgen. Ganz links steht, in welchem Text der Treffer jeweils gefunden wurde. 
-* Auch hier kann man einstellen, welche Informationen als "pivot" angezeigt werden sollen. Die Sortierung kann variiert werden. </script>
+Search which displays the context of a certain term
+* This function shows the hits in context, with some words appearing before and some words following
+* Includes a reference to the document in which each hit was found
+* Again, the property of the hits to be shown can be customized
+</script>
 </section>
 
 <section data-markdown>
 <script type="text/template">
 ## Cooccurrences
-Suche nach den Wortformen, die oft gemeinsam mit einer bestimmten Wortform vorkommen. Man kann nach verschiedenen Kriterien sortieren:
-* `fréquence`: absolute Häufigkeit der kookurrierenden Wörter; abhängig von der Textlänge.
-* `cofréquence`: absolute Häufigkeit, mit der das Suchwort und das gefundene Wort gemeinsam vorkommen. 
-* `indice`: Maß für den Grad an Spezifik, den eine Kookurrenz von zwei Wörtern hat; dies ist die am stärksten aussagekräftige Angabe. 
-* `distance`: durchschnittlicher Abstand zwischen dem Suchwort und dem gefundenen Wort im Textverlauf. 
+Search for terms which typically appear together with a target term (many options!)
+* `cooccurrent`: the term cooccurring with the target term
+* `frequency`: absolute frequency of the cooccurring terms;
+* `cofrequency`: absolute frequency with which target term and found term occur together
+* `score`: measure for the degree of specificity of a cooccurrence (most relevant)
+* `mean distance`: mean distance between the target terms and the found term
 </script>
 </section>
 
@@ -121,33 +142,36 @@ Suche nach den Wortformen, die oft gemeinsam mit einer bestimmten Wortform vorko
 
 <section data-markdown>
 <script type="text/template">
-# 2. Verschiedene Suchmodi (Index)
+# 2. Several search modes
+<br/>
+<p>(Depending on the annotations present)</p>
 </script>
 </section>
 
 <section data-markdown>
 <script type="text/template">
-## Wortformen
-Suche nach graphischen Wortformen.
-* `"worked"`  - einfachste Variante; findet die Anzahl des Wortes "worked"
-* `[word="worked"]` - ebenso, aber diese Formulierung ist besser erweiterbar (siehe unten)</script>
+## Word forms
+Search for graphical word forms
+* `"worked"`  - the simplest mode; finds the number of times "worked" occurs
+* `[word="worked"]` - same, but this query can be enhanced more easily (see below)</script>
 </section>
 
 <section data-markdown>
 <script type="text/template">
-## Lemmata
-Suche nach allen Worten, die einer bestimmten Grundform zugehören. 
-* `[enlemma="mouse"]` – findet alle Stellen, an denen das Lemma "mouse" in seinen verschiedenen Formen vorkommt: "mouse" und "mice".</script>
-* (Sprachabhängig! `enlemma`, `frlemma`, `eslemma`, etc.)
+## Lemmas
+Search for all terms which correspond to a specific lemma (base form)
+* `[enlemma="mouse"]` – finds all terms corresponding to the lemma "mouse" in its different forms: "mouse", "mice"
+* The label used is language dependent: `enlemma`, `pllemma`, `frlemma`, `eslemma`, etc.
+</script>
 </section>
 
 <section data-markdown>
 <script type="text/template">
 ## Part-of-Speech
-Suche nach allen Wortformen, die einer bestimmten grammatikalischen Kategorie (POS) zugehören.
-* `[enpos="VV"]` - Suche nach Verben. Findet “was”, “is”, “had”, etc. 
-* `[enpos="JJ"]` – findet beliebige Adjektive vorkommt: "other", "great", "little". 
-* (Das Inventar der POS-Tags ist ebenfalls sprachabhängig)
+Search for all terms which belong to a certain grammatical category.
+* `[enpos="VV"]` - finds any verb: "was", "is", "had", etc. 
+* `[enpos="JJ"]` - finds any adjective: "other", "great", "little". 
+* The inventory of POS-Tags depends on the language and tagger used
 </script>
 </section>
 
@@ -156,87 +180,32 @@ Suche nach allen Wortformen, die einer bestimmten grammatikalischen Kategorie (P
 
 <section data-markdown>
 <script type="text/template">
-# 3. Erweiterte Suchen
+# 3. Advanced search queries
 </script>
 </section>
 
 <section data-markdown>
 <script type="text/template">
-## Folge mehrerer Suchbegriffe
-Ein Suchbegriff, gefolgt von einem weiteren Suchbegriff. Solche Abfragen können mit dem Query Editor ("assistant de requêtes") erstellt werden; dort auf "mot supplémentaire" klicken.
-* `[word="she"][word="did"]` – Findet die Anzahl der Stellen, an denen "she did" vorkommt.
-Man kann hier auch verschiedene Suchmodi kombinieren: 
-* `[enpos="JJ"][enlemma="house"]` - Findet Treffer, bei denen auf ein Adjektiv das Lemma "house" folgt. Bspw.: "great house", "empty house" und "old house".
+## Sequence of several search termsss
+One search term followed by another search term. (See also the Query Editor!)
+* `[word="she"][word="did"]` - finds the number of hits for the sequence "she did".
+It is possible to combine several search modes
+* `[enpos="JJ"][enlemma="house"]` - finds hits in which an adjective is followed by any word form based on the lemma "house": for example, "great house", "empty house" and "old house".
 </script>
 </section>
 
 <section data-markdown>
 <script type="text/template">
-## Suchbegriffe in bestimmtem Abstand
-Mehrere Suchbegriffe, mit Minimal- und Maximalabstand dazwischen:
-* `[enpos="VV"][]{0,5}[enlemma="money"]` – Findet alle Kombinationen eines Verbs, gefolgt von null bis fünf anderen Worten, gefolgt von dem Lemma "money"; 
-* Beispielsweise: "take his money" und "add to the money" sowie "do to raise the money". </script>
+## Search terms in a certain distance
+Several search terms with a minimal (and maximal) distance between them:
+* `[enpos="VV"][]{0,5}[enlemma="money"]` - finds all combinations of a verb, followed by 0 to 5 words of any kind, followed by the lemma "money": for example, "take his money" and "add to the money" and "do to raise the money". </script>
 </section>
 
 <section data-markdown>
 <script type="text/template">
-## Kombination von Kriterien für ein Element
-Verknüpfung von Kriterien unterschiedlicher Art bezogen auf ein einziges Element, bspw. Information über die Graphie eines Wortes mit seiner grammatikalischen Kategorie:
-*  `[word="dog" & enpos="VV"]` – Findet alle Wörter, die "dog" lauten UND ein Verb sind (to dog = jemanden verfolgen), d.h. schließt alle diejenigen Fälle aus, in denen "dog" als Substantiv verwendet wird.
-</script>
-</section>
-
-</section>
-<section>
-
-<section data-markdown>
-<script type="text/template">
-# 4. Wildcards und Symbole
-</script>
-</section>
-
-<section data-markdown>
-<script type="text/template">
-## Einige nützliche Wildcards: 
-* `.` Punkt = jedes beliebige Wort-Zeichen (aber keine Leerzeichen etc.)
-* `*` Stern = das direkt vorangehende Zeichen soll null mal oder beliebig oft auftauchen
-* `+` Plus = das direkt vorangehende Zeichen soll mindestens einmal oder beliebig oft auftauchen
-* `?` Fragezeichen = das direkt vorangehende Zeichen soll entweder null mal oder einmal auftauchen
-</section>
-
-<section data-markdown>
-<script type="text/template">
-## Beispielabfragen:
-* `[word="go.?"]` - Wildcard innerhalb des Elements. Wort, das "go" und keinen oder einen weiterer Buchstabe hat; findet: "go" und "got", aber nicht "goes" (zwei weitere Buchstaben)
-* `[word="f.*ic"]` – Wörter, die mit "f" anfangen, dann mehrere beliebige Zeichen haben und mit "ic" aufhören; findet: "fabric", "fanatic" und "fantastic", etc.
-* `[word=".*ic" & enpos="JJ"]` – Wörter, die auf "ic" enden und Adjektive sind; findet: bspw. "acrobatic", "aeronautic" und "angelic", etc.
-</script>
-</section>
-
-<section data-markdown>
-<script type="text/template">
-## Einige nützliche Symbole: 
-* `{x}` Numerische Angabe: Gibt an, dass das vorangehende Zeichen oder Element genau x-mal vorkommen soll.
-* `{x,y}` Numerischer Bereich: Gibt an, dass das vorangehende Zeichen oder Element zwischen x-mal und y-mal vorkommen soll.
-* `%c` Zusatz nach den Anführungszeichen: die Groß- und Kleinschreibung wird ignoriert.
-* `%d` Zusatz nach den Anführungszeichen: die Akzente und andere diakritischen Zeichen werden ignoriert. Kann auch als `%cd` kombiniert werden.</script>
-</section>
-
-
-<section data-markdown>
-<script type="text/template">
-## Beispielabfragen:
-* `[word="heaven"%c]` – Ignoriert Groß- und Kleinschreibung; findet: "heaven" (physisch) und "Heaven" (metaphysisch / am Satzanfang).
-* `[word="the"][enpos="JJ"]{2}[enpos="NN"]` - Wildcard auf Ebene der Einheiten; Sequenzen, in denen erst das Wort "the" kommt, dann genau zwei Adjektive, dann ein Substantiv; findet bspw. "the deep blue sky" oder "the angry old man". 
-</script>
-</section>
-
-<section data-markdown>
-<script type="text/template">
-## Suche mit Alternativen
-Mehrere Suchbegriffe alternativ suchen (mit dem "|"-Zeichen)
-* `[word="city|country"]` - Alternativen bezogen auf Einzelwörter; findet jeweils die Stellen, an denen "city" oder "country" vorkommt. 
-* `[enpos="DT|PP"]` - Alternativen bezogen auf die Wortart; Suche nach Artikeln oder Personalpronomina; findet u.a. "the", "a", "it", "you", etc.
+## Combination of criteria for one term
+Combines several criteria of different types for one single term, for example criteria concerning the word for and the grammatical category
+*  `[word="dog" & enpos="VV"]` - finds all terms which are written "dog" AND are a verb (to dog = to follow someone). This notably excludes all cases in which "dog" is a noun
 </script>
 </section>
 
@@ -245,29 +214,52 @@ Mehrere Suchbegriffe alternativ suchen (mit dem "|"-Zeichen)
 
 <section data-markdown>
 <script type="text/template">
-# 5. Strukturierung eines Korpus
+# 4. Wildcards and Symbols
 </script>
 </section>
 
 <section data-markdown>
 <script type="text/template">
-## Unter-Korpus definieren
-Eine Teilmenge des Gesamtkorpus. 
-* Rechts-Klick auf `DOYLE`, dort `Sous-Corpus` auswählen. 
-* Dem Unterkorpus einen Namen geben, bspw. "historical". 
-* Im Reiter `simple` bleiben und die Einstellungen anpassen (Structure: `text` – Propriété: `subgenre`). 
-* Aus der sich öffnenden Liste der Genres "historical" auswählen, OK klicken. 
-* Für andere Kriterien das Vorgehen entsprechend anpassen oder die feiner zu steuernden Verfahren `assisté` oder `avancé` wählen.</script>
+## Wildcard and quantifiers: 
+* `.` dot = wildcard: any word character (but not a whitespace)
+* `*` asterisk = the character or term immediately preceding has to be present zero or several times
+* `+` plus = ... has to be present at least once or several times
+* `?` question mark = ... has to be present either zero times or one time
 </section>
 
 <section data-markdown>
 <script type="text/template">
-## Korpus partitionieren
-Das Korpus intern strukturieren.
-* Rechts-Klick auf `DOYLE`, dort `Partition` auswählen. 
-* Dem geteilten Korpus einen Namen geben, bspw. "Jahrzehnte". 
-* Im Reiter `simple` bleiben und die Einstellungen passend einrichten: Structure: `text` – Propriété: `decades`). OK klicken.
-* Hier wird Gesamtkorpus automatisch nach den relevanten Klassen aufgeteilt.
+## Examples:
+* `[word="go.?"]` - wildcard used inside a term. Searching for a word which starts with "go" and has zero or one more characters. Finds: "go" and "got", but not "goes" (two more characters)
+* `[word="f.*ic"]` - words starting with an "f", followed by zero or several characters, and ending with "ic". Finds: "fabric", "fanatic", "fantastic", etc.
+* `[word=".*ic" & enpos="JJ"]` - words which end on "ic" and are adjectives. Finds: "acrobatic", "aeronautic", "angelic", etc.
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Some more useful symbols 
+* `{x}` = numerical indicator. Indicates how many times the previous character or term should be present.
+* `{x,y}` = numerical range. Indicates the minimum and maximum number the previous character or term should be present
+* `%c` = ignore uppercase/lowercase distinction (add after the quotation marks)
+* `%d` = ignore accents and diacritics (add after quotation marks). The combination `%cd` is also possible.</script>
+</section>
+
+
+<section data-markdown>
+<script type="text/template">
+## Examples:
+* `[word="heaven"%c]` – finds: "heaven" (physical) und "Heaven" (metaphysical / or at sentence-initial position).
+* `[word="the"][enpos="JJ"]{2}[enpos="NN"]` - wildcard on the level of terms; sequence of "the", then two adjectives, then one noun. Finds "the deep blue sky" and "the angry old man". 
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Search with alternatives
+Find several search terms at a time (using the "|" pipe character)
+* `[word="city|village"]` - alternatives concerning word forms; finds all passages containing either "city" or "village"
+* `[enpos="DT|PP"]` - alternatives concerning the part-of-speech; finds all articles and personal pronouns: "the", "a", "it", "you", etc.
 </script>
 </section>
 
@@ -276,27 +268,112 @@ Das Korpus intern strukturieren.
 
 <section data-markdown>
 <script type="text/template">
-# 6. Vergleichende Abfragen</script>
+# 5. Structuring a corpus
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Define a sub-corpus
+Only a specific part of the corpus goes into the subcorpus 
+* Right-click on "DOYLE", choose `subcorpus`
+* Give the subcorpus a name, for instance "historical" 
+* Stay in the `simple` tab and adapt the settings: structure="text", property="subgenre". Confirm.
+* From the list of subgenres, select "historical"; done! 
+* (For more complex scenarios, use the assisted and advanced modes)</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Partition a corpus
+Add an internal structure to the corpus based on metadata
+* Right-click on `DOYLE`, choose `partition` 
+* Give the partition a name, e.g. "decades". 
+* Stay in the `simple` tab and adapt the settings: structure="text", property="decade". Confirm.
+* The corpus will be automatically subdivided according to decade.
+</script>
+</section>
+
+</section>
+<section>
+
+<section data-markdown>
+<script type="text/template">
+# 6. Comparative analyses</script>
 </section>
 
 <section data-markdown>
 <script type="text/template">
 ## Progression
-* Rechtsklick auf einen Treffer (in Index oder Lexique)
-* Auf `Envoyer vers progression` klicken
-* Type de graphe: `cumulatif` auswählen (zeigt die Trefferzahlen kumulativ, d.h. als ansteigende Kurve an; die Steigung der Kurve zeigt dann die lokale Frequenz an.)
-* Échelle des bandeaux: "0.5" einstellen (oder zwischen 0.2 und 1.0 variieren)
-* Unité strucurelle: `text` auswählen
-* Propriété: `subgenre` oder `title` auswählen; OK klicken!</script>
+* In Index oder Lexicon, right-click on a term
+* Choose `Send to progression` 
+* Graph type: select `cumulative` or `density`
+* Bandwith multiplier: set to "0.5" (or vary between 0.2 und 1.0)
+* Structural unit: select "text"
+* Property: select "subgenre" or "title"; Confirm</script>
 </section>
 
 <section data-markdown>
 <script type="text/template">
-## Spécificités
-* Auf eine Partition klicken, dann Rechtsklick
-* Auf `Spécificités` klicken
-* Propriété definieren (bspw. `word`)
-* `Focus de partie`: leer lassen für Vergleich aller Teile; oder einen Teil auswählen. OK klicken.
+## Specificities
+* Click on a partition, then right-click
+* Select `specificities` 
+* Define a `property` (for example "word")
+* `Part focus`: leave empty to compare all partitions; confirm.
+</script>
+</section>
+
+
+</section>
+<section>
+
+<section data-markdown>
+<script type="text/template">
+# 7. Import texts</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Various import formats
+* Using the functions provided in `File>Import`
+* Directly from the clipboard (single text)
+* From a folder with text files (with optional `metadata.csv` file) 
+* From a folder with XML/TEI files (with optional `metadata.csv` file) 
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Import options
+* `Main language`: for linguistic annotation; make sure to select the right language (requirement: TreeTagger and relevant language parameter file)
+* `Metadata preview`: check if you have a metadata.csv file. One column needs to be called `id` with entries corresponding to the file names. 
+</script>
+</section>
+
+
+</section>
+<section>
+
+<section data-markdown>
+<script type="text/template">
+# Conclusion</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Conclusion
+* Now you know the basic functions of TXM! 
+* Let's move on and try this out in practice
+<br/>
+<br/>
+<p><img height="200" data-src="img/textometrie.jpg"></img></p>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Import options
+* `Main language`: for linguistic annotation; make sure to select the right language (requirement: TreeTagger and relevant language parameter file)
+* Check `Metadata preview` if you have a metadata.csv file. One column needs to be called `id` with entries corresponding to the file names. 
 </script>
 </section>
 
@@ -312,7 +389,7 @@ Das Korpus intern strukturieren.
 <p>Christof Schöch, 2016</p>
 <p>http://www.christof-schoech.de</p>
 <hr/>
-<p>Lizenz: Creative Commons Attribution 4.0 International</p>
+<p>License: Creative Commons Attribution 4.0 International</p>
 <p>https://creativecommons.org/licenses/by/4.0/</p>
 </script>
 </section>
