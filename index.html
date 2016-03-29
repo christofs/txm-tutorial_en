@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- CUSTOMIZE THIS! -->
+<title>TXM-Tutorial</title>
+<meta name="author" content="Christof Schöch">
+<!-- END -->
+<meta name="description" content="Slides">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" href="css/reveal.css">
+<link rel="stylesheet" href="css/theme/simple.css" id="theme">
+<!-- Code syntax highlighting -->
+<link rel="stylesheet" href="lib/css/zenburn.css">
+<!-- Printing and PDF exports -->
+<script>
+var link = document.createElement( 'link' );
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+document.getElementsByTagName( 'head' )[0].appendChild( link );
+</script>
+<!--[if lt IE 9]>
+<script src="lib/js/html5shiv.js"></script>
+<![endif]-->
+</head>
+
+<body>
+<div class="reveal">
+<!-- THIS IS WHERE THE CONTENT GOES! -->
+<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+
+<section data-markdown>
+<script type="text/template">
+# TXM-Tutorial
+<hr/>
+<br/>
+<p>Workshop Digitale Forschungsmethoden in der Romanistik</p>
+<p>Forum Junge Romanistik 2016, Universität Würzburg</p>
+<br/>
+<hr/>
+<p>Christof Schöch<br/>CLiGS - Universität Würzburg</p>
+<p><img height="50" data-src="img/basics/UWUE.jpg"></img>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img height="100" data-src="img/basics/CLiGS.jpg"></img>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img height="50" data-src="img/basics/BMBF.jpg"></img></p>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Überblick
+1. Einzelne Funktionen
+2. Verschiedene Suchmodi
+3. Erweiterte Suchen
+4. Wildcards und Symbole
+5. Strukturierung eines Korpus
+6. Vergleichende Abfragen
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Textsammlung als Beispiel
+* 12 englische Romane von Arthur Conan Doyle
+* Aus verschiedenen Jahrzehnten und verschiedenen Untergattungen
+</script>
+</section>
+
+
+<section>
+	
+<section data-markdown>
+<script type="text/template">
+# 1. Einzelne Funktionen
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Lexique
+Liste aller Wortformen, die im Korpus vorkommen, alphabetisch oder nach Frequenz sortierbar. Nützlich, um besonders häufige und besonders seltene Wörter festzustellen.
+* Sortierbar nach Alphabet oder Frequenz
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Index
+Abfrage der Frequenz einer bestimmten Wortform (oder anderer Suchbegriffe) im Korpus. 
+* Man kann einstellen, welche Information als "pivot" (das im Zentrum stehende Element) angezeigt werden soll: die Wortform, das Lemma, oder das POS-Tag; oder mehrere dieser Informationen.
+* Es werden die Treffer und ihre Frequenz angezeigt; man kann von hier aus weitere Sichten ansteuern (siehe unten)
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Concordance
+Suche nach dem Kontext einer bestimmten Wortform (oder anderer Suchbegriffe). 
+* Hier wird das Suchwort im Kontext angezeigt, also mit einigen Wörtern, die davor stehen und die folgen. Ganz links steht, in welchem Text der Treffer jeweils gefunden wurde. 
+* Auch hier kann man einstellen, welche Informationen als "pivot" angezeigt werden sollen. Die Sortierung kann variiert werden. </script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Cooccurrences
+Suche nach den Wortformen, die oft gemeinsam mit einer bestimmten Wortform vorkommen. Man kann nach verschiedenen Kriterien sortieren:
+* `fréquence`: absolute Häufigkeit der kookurrierenden Wörter; abhängig von der Textlänge.
+* `cofréquence`: absolute Häufigkeit, mit der das Suchwort und das gefundene Wort gemeinsam vorkommen. 
+* `indice`: Maß für den Grad an Spezifik, den eine Kookurrenz von zwei Wörtern hat; dies ist die am stärksten aussagekräftige Angabe. 
+* `distance`: durchschnittlicher Abstand zwischen dem Suchwort und dem gefundenen Wort im Textverlauf. 
+</script>
+</section>
+
+
+</section>
+<section>
+
+
+<section data-markdown>
+<script type="text/template">
+# 2. Verschiedene Suchmodi (Index)
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Wortformen
+Suche nach graphischen Wortformen.
+* `"worked"`  - einfachste Variante; findet die Anzahl des Wortes "worked"
+* `[word="worked"]` - ebenso, aber diese Formulierung ist besser erweiterbar (siehe unten)</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Lemmata
+Suche nach allen Worten, die einer bestimmten Grundform zugehören. 
+* `[enlemma="mouse"]` – findet alle Stellen, an denen das Lemma "mouse" in seinen verschiedenen Formen vorkommt: "mouse" und "mice".</script>
+* (Sprachabhängig! `enlemma`, `frlemma`, `eslemma`, etc.)
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Part-of-Speech
+Suche nach allen Wortformen, die einer bestimmten grammatikalischen Kategorie (POS) zugehören.
+* `[enpos="VV"]` - Suche nach Verben. Findet “was”, “is”, “had”, etc. 
+* `[enpos="JJ"]` – findet beliebige Adjektive vorkommt: "other", "great", "little". 
+* (Das Inventar der POS-Tags ist ebenfalls sprachabhängig)
+</script>
+</section>
+
+</section>
+<section>
+
+<section data-markdown>
+<script type="text/template">
+# 3. Erweiterte Suchen
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Folge mehrerer Suchbegriffe
+Ein Suchbegriff, gefolgt von einem weiteren Suchbegriff. Solche Abfragen können mit dem Query Editor ("assistant de requêtes") erstellt werden; dort auf "mot supplémentaire" klicken.
+* `[word="she"][word="did"]` – Findet die Anzahl der Stellen, an denen "she did" vorkommt.
+Man kann hier auch verschiedene Suchmodi kombinieren: 
+* `[enpos="JJ"][enlemma="house"]` - Findet Treffer, bei denen auf ein Adjektiv das Lemma "house" folgt. Bspw.: "great house", "empty house" und "old house".
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Suchbegriffe in bestimmtem Abstand
+Mehrere Suchbegriffe, mit Minimal- und Maximalabstand dazwischen:
+* `[enpos="VV"][]{0,5}[enlemma="money"]` – Findet alle Kombinationen eines Verbs, gefolgt von null bis fünf anderen Worten, gefolgt von dem Lemma "money"; 
+* Beispielsweise: "take his money" und "add to the money" sowie "do to raise the money". </script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Kombination von Kriterien für ein Element
+Verknüpfung von Kriterien unterschiedlicher Art bezogen auf ein einziges Element, bspw. Information über die Graphie eines Wortes mit seiner grammatikalischen Kategorie:
+*  `[word="dog" & enpos="VV"]` – Findet alle Wörter, die "dog" lauten UND ein Verb sind (to dog = jemanden verfolgen), d.h. schließt alle diejenigen Fälle aus, in denen "dog" als Substantiv verwendet wird.
+</script>
+</section>
+
+</section>
+<section>
+
+<section data-markdown>
+<script type="text/template">
+# 4. Wildcards und Symbole
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Einige nützliche Wildcards: 
+* `.` Punkt = jedes beliebige Wort-Zeichen (aber keine Leerzeichen etc.)
+* `*` Stern = das direkt vorangehende Zeichen soll null mal oder beliebig oft auftauchen
+* `+` Plus = das direkt vorangehende Zeichen soll mindestens einmal oder beliebig oft auftauchen
+* `?` Fragezeichen = das direkt vorangehende Zeichen soll entweder null mal oder einmal auftauchen
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Beispielabfragen:
+* `[word="go.?"]` - Wildcard innerhalb des Elements. Wort, das "go" und keinen oder einen weiterer Buchstabe hat; findet: "go" und "got", aber nicht "goes" (zwei weitere Buchstaben)
+* `[word="f.*ic"]` – Wörter, die mit "f" anfangen, dann mehrere beliebige Zeichen haben und mit "ic" aufhören; findet: "fabric", "fanatic" und "fantastic", etc.
+* `[word=".*ic" & enpos="JJ"]` – Wörter, die auf "ic" enden und Adjektive sind; findet: bspw. "acrobatic", "aeronautic" und "angelic", etc.
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Einige nützliche Symbole: 
+* `{x}` Numerische Angabe: Gibt an, dass das vorangehende Zeichen oder Element genau x-mal vorkommen soll.
+* `{x,y}` Numerischer Bereich: Gibt an, dass das vorangehende Zeichen oder Element zwischen x-mal und y-mal vorkommen soll.
+* `%c` Zusatz nach den Anführungszeichen: die Groß- und Kleinschreibung wird ignoriert.
+* `%d` Zusatz nach den Anführungszeichen: die Akzente und andere diakritischen Zeichen werden ignoriert. Kann auch als `%cd` kombiniert werden.</script>
+</section>
+
+
+<section data-markdown>
+<script type="text/template">
+## Beispielabfragen:
+* `[word="heaven"%c]` – Ignoriert Groß- und Kleinschreibung; findet: "heaven" (physisch) und "Heaven" (metaphysisch / am Satzanfang).
+* `[word="the"][enpos="JJ"]{2}[enpos="NN"]` - Wildcard auf Ebene der Einheiten; Sequenzen, in denen erst das Wort "the" kommt, dann genau zwei Adjektive, dann ein Substantiv; findet bspw. "the deep blue sky" oder "the angry old man". 
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Suche mit Alternativen
+Mehrere Suchbegriffe alternativ suchen (mit dem "|"-Zeichen)
+* `[word="city|country"]` - Alternativen bezogen auf Einzelwörter; findet jeweils die Stellen, an denen "city" oder "country" vorkommt. 
+* `[enpos="DT|PP"]` - Alternativen bezogen auf die Wortart; Suche nach Artikeln oder Personalpronomina; findet u.a. "the", "a", "it", "you", etc.
+</script>
+</section>
+
+</section>
+<section>
+
+<section data-markdown>
+<script type="text/template">
+# 5. Strukturierung eines Korpus
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Unter-Korpus definieren
+Eine Teilmenge des Gesamtkorpus. 
+* Rechts-Klick auf `DOYLE`, dort `Sous-Corpus` auswählen. 
+* Dem Unterkorpus einen Namen geben, bspw. "historical". 
+* Im Reiter `simple` bleiben und die Einstellungen anpassen (Structure: `text` – Propriété: `subgenre`). 
+* Aus der sich öffnenden Liste der Genres "historical" auswählen, OK klicken. 
+* Für andere Kriterien das Vorgehen entsprechend anpassen oder die feiner zu steuernden Verfahren `assisté` oder `avancé` wählen.</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Korpus partitionieren
+Das Korpus intern strukturieren.
+* Rechts-Klick auf `DOYLE`, dort `Partition` auswählen. 
+* Dem geteilten Korpus einen Namen geben, bspw. "Jahrzehnte". 
+* Im Reiter `simple` bleiben und die Einstellungen passend einrichten: Structure: `text` – Propriété: `decades`). OK klicken.
+* Hier wird Gesamtkorpus automatisch nach den relevanten Klassen aufgeteilt.
+</script>
+</section>
+
+</section>
+<section>
+
+<section data-markdown>
+<script type="text/template">
+# 6. Vergleichende Abfragen</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Progression
+* Rechtsklick auf einen Treffer (in Index oder Lexique)
+* Auf `Envoyer vers progression` klicken
+* Type de graphe: `cumulatif` auswählen (zeigt die Trefferzahlen kumulativ, d.h. als ansteigende Kurve an; die Steigung der Kurve zeigt dann die lokale Frequenz an.)
+* Échelle des bandeaux: "0.5" einstellen (oder zwischen 0.2 und 1.0 variieren)
+* Unité strucurelle: `text` auswählen
+* Propriété: `subgenre` oder `title` auswählen; OK klicken!</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Spécificités
+* Auf eine Partition klicken, dann Rechtsklick
+* Auf `Spécificités` klicken
+* Propriété definieren (bspw. `word`)
+* `Focus de partie`: leer lassen für Vergleich aller Teile; oder einen Teil auswählen. OK klicken.
+</script>
+</section>
+
+
+</section>
+
+<section data-markdown>
+<script type="text/template">
+<br/>
+<br/>
+<br/>
+<br/>
+<p>Christof Schöch, 2016</p>
+<p>http://www.christof-schoech.de</p>
+<hr/>
+<p>Lizenz: Creative Commons Attribution 4.0 International</p>
+<p>https://creativecommons.org/licenses/by/4.0/</p>
+</script>
+</section>
+
+
+
+
+<!-- DON'T TOUCH UNLESS YOU KNOW WHAT YOU'RE DOING :-) -->
+</div>
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+<script>
+// Full list of configuration options available at:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+	controls: true,
+	progress: true,
+	history: true,
+	center: true,
+	transition: 'slide', // none/fade/slide/convex/concave/zoom
+	// Optional reveal.js plugins
+	dependencies: [
+		{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+		{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+		{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+		{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+		{ src: 'plugin/zoom-js/zoom.js', async: true },
+		{ src: 'plugin/notes/notes.js', async: true }
+		]
+	});
+</script>
+</body>
+</html>
