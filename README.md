@@ -1,6 +1,4 @@
-Computerphilologie
-==================
+TXM Tutorial (English)
+======================
 
-Kleiner Überblick über einige Themen und Tools der Computerphilologie.
-
-* http://christofs.github.io/txm-tutorial/#/
+Brief introduction to the TXM text analysis program. See <//http://textometrie.ens-lyon.fr/>.
