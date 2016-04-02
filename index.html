@@ -81,6 +81,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 * 12 British novels by Arthur Conan Doyle
 * Written in two different decades
 * Belonging to four different subgenres: detective, adventure, horror, historical novel
+<!-- #TODO: Make nice XML-based TXM binary corpus, put on Zenodo, link here. -->
 </script>
 </section>
 
@@ -171,7 +172,8 @@ Search for all terms which correspond to a specific lemma (base form)
 Search for all terms which belong to a certain grammatical category.
 * `[enpos="VV"]` - finds any verb: "was", "is", "had", etc. 
 * `[enpos="JJ"]` - finds any adjective: "other", "great", "little". 
-* The inventory of POS-Tags depends on the language and tagger used; the label is language-dependent: `frpos`, `plpos`, etc.
+* Again, the label is language-dependent: `frpos`, `plpos`, etc.
+* The inventory of POS-Tags depends on the language model used by TreeTagger; see <http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/>; 
 </script>
 </section>
 
@@ -214,25 +216,27 @@ Combines several criteria of different types for one single term, for example cr
 
 <section data-markdown>
 <script type="text/template">
-# 4. Wildcards and Symbols
+# 4. Symbols to enhance queries
 </script>
 </section>
 
 <section data-markdown>
 <script type="text/template">
-## Wildcard and quantifiers: 
+## The wildcard and quantifiers
 * `.` dot = wildcard: any word character (but not a whitespace)
-* `*` asterisk = the character or term immediately preceding has to be present zero or several times
+* `*` asterisk = the character (or: group or entire term) immediately preceding has to be present zero or several times
 * `+` plus = ... has to be present at least once or several times
-* `?` question mark = ... has to be present either zero times or one time
+* `?` question mark = ... has to be present either zero times or once, but not more than once
 </section>
+
 
 <section data-markdown>
 <script type="text/template">
-## Examples:
-* `[word="go.?"]` - wildcard used inside a term. Searching for a word which starts with "go" and has zero or one more characters. Finds: "go" and "got", but not "goes" (two more characters)
-* `[word="f.*ic"]` - words starting with an "f", followed by zero or several characters, and ending with "ic". Finds: "fabric", "fanatic", "fantastic", etc.
-* `[word=".*ic" & enpos="JJ"]` - words which end on "ic" and are adjectives. Finds: "acrobatic", "aeronautic", "angelic", etc.
+## Examples
+* `[word="go.?"]` - words which starts with "go" and has zero or one more characters. Finds: "go" and "got", but not "goes" (two more characters)
+* `[word="f.*ic" & enpos="JJ"]` - words starting with an "f" and ending on "ic" which are adjectives. Finds: "fantastic" and "frantic".
+* `[word="go"][enpos="RB"]+` - The word "go" followd by one or several adverbs. Finds: "go away" and "go down again" etc. 
+<!-- #TODO: Report error in TXM, does not use the quantififer correctly -->
 </script>
 </section>
 
@@ -256,10 +260,12 @@ Combines several criteria of different types for one single term, for example cr
 
 <section data-markdown>
 <script type="text/template">
-## Search with alternatives
+## Alternatives and negation
 Find several search terms at a time (using the "|" pipe character)
 * `[word="city|village"]` - alternatives concerning word forms; finds all passages containing either "city" or "village"
 * `[enpos="DT|PP"]` - alternatives concerning the part-of-speech; finds all articles and personal pronouns: "the", "a", "it", "you", etc.
+Use negation to exclude certain results
+* `[enpos="NP" & word!="Holmes"]` - find all proper names except Holmes. Compare with `[enpos="NP"]`
 </script>
 </section>
 
