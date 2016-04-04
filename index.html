@@ -174,7 +174,7 @@ Search for all terms which belong to a certain grammatical category.
 * `[enpos="VV"]` - finds any verb: "was", "is", "had", etc. 
 * `[enpos="JJ"]` - finds any adjective: "other", "great", "little". 
 * Again, the label is language-dependent: `frpos`, `plpos`, etc.
-* The inventory of POS-Tags depends on the language model used by TreeTagger; see <http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/>; 
+* The inventory of POS-Tags depends on the language model used by TreeTagger; see <http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/>
 </script>
 </section>
 
@@ -207,7 +207,7 @@ Several search terms with a minimal (and maximal) distance between them:
 <section data-markdown>
 <script type="text/template">
 ## Combination of criteria for one term
-Combines several criteria of different types for one single term, for example criteria concerning the word for and the grammatical category
+Combines several criteria of different types for one single term, for example criteria concerning the word form and the grammatical category
 *  `[word="dog" & enpos="VV"]` - finds all terms which are written "dog" AND are a verb (to dog = to follow someone). This notably excludes all cases in which "dog" is a noun
 </script>
 </section>
@@ -225,9 +225,9 @@ Combines several criteria of different types for one single term, for example cr
 <script type="text/template">
 ## The wildcard and quantifiers
 * `.` dot = wildcard: any word character (but not a whitespace)
-* `*` asterisk = the character (or: group or entire term) immediately preceding has to be present zero or several times
-* `+` plus = ... has to be present at least once or several times
-* `?` question mark = ... has to be present either zero times or once, but not more than once
+* `*` asterisk = the character (or: term, or group) immediately preceding has to be present zero or several times
+* `+` plus = ... has to be present at least once or several times (but: non-greedy in TXM!)
+* `?` question mark = ... has to be present either zero times or once (but not more than once)
 </section>
 
 
@@ -236,18 +236,17 @@ Combines several criteria of different types for one single term, for example cr
 ## Examples
 * `[word="go.?"]` - words which starts with "go" and has zero or one more characters. Finds: "go" and "got", but not "goes" (two more characters)
 * `[word="f.*ic" & enpos="JJ"]` - words starting with an "f" and ending on "ic" which are adjectives. Finds: "fantastic" and "frantic".
-* `[word="go"][enpos="RB"]+` - The word "go" followd by one or several adverbs. Finds: "go away" and "go down again" etc. 
-<!-- #TODO: Report error in TXM, does not use the quantififer correctly -->
+* `[word="go"][enpos="RB"]*` - The word "go" followd by one or several adverbs. Finds: "go away", "go down again" etc. 
 </script>
 </section>
 
 <section data-markdown>
 <script type="text/template">
-## Some more useful symbols 
+## Numerators and special flags
 * `{x}` = numerical indicator. Indicates how many times the previous character or term should be present.
 * `{x,y}` = numerical range. Indicates the minimum and maximum number the previous character or term should be present
-* `%c` = ignore uppercase/lowercase distinction (add after the quotation marks)
-* `%d` = ignore accents and diacritics (add after quotation marks). The combination `%cd` is also possible.</script>
+* `%c` = flag to ignore uppercase/lowercase distinction (add after the quotation marks)
+* `%d` = flag to ignore accents and diacritics (add after quotation marks). The combination `%cd` is also possible.</script>
 </section>
 
 
@@ -265,8 +264,11 @@ Combines several criteria of different types for one single term, for example cr
 Find several search terms at a time (using the "|" pipe character)
 * `[word="city|village"]` - alternatives concerning word forms; finds all passages containing either "city" or "village"
 * `[enpos="DT|PP"]` - alternatives concerning the part-of-speech; finds all articles and personal pronouns: "the", "a", "it", "you", etc.
+Use groups together with alternatives
+* `[word="s(a|e|i|o|u){2,3}t"]` - finds all words starting with an "s", followed by two or three vowels, and ending on a "t": "seat", "soot" and "soot".
 Use negation to exclude certain results
-* `[enpos="NP" & word!="Holmes"]` - find all proper names except Holmes. Compare with `[enpos="NP"]`
+* `[enpos="NP" & word!="Holmes"]` - find all proper names except "Holmes". Compare with `[enpos="NP"]`
+
 </script>
 </section>
 
