@@ -106,12 +106,27 @@ List of all terms (which can be word forms, lemmas, POS, etc.) which appear in t
 
 <section data-markdown>
 <script type="text/template">
+<p><img height="550" data-src="img/1-1_Lexicon.jpg"></img>
+<p>Lexicon</p>
+</script>
+</section>
+
+
+<section data-markdown>
+<script type="text/template">
 ## Index
 Function to find out the frequency of a certain term in the corpus
 * Gives a list of found terms and their frequency
 * It is possible to set the property of the term that should be shown (word, lemma, POS or combination)
 * Important conceptual distinction: property of the query vs. property displayed
 * Further tools can be started from here
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+<p><img height="550" data-src="img/1-2_Index.jpg"></img>
+<p>Index</p>
 </script>
 </section>
 
@@ -127,6 +142,13 @@ Search which displays the context of a certain term
 
 <section data-markdown>
 <script type="text/template">
+<p><img height="550" data-src="img/1-3_Concordance.jpg"></img>
+<p>Concordance</p>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
 ## Cooccurrences
 Search for terms which typically appear together with a target term (many options!)
 * `cooccurrent`: the term cooccurring with the target term
@@ -136,6 +158,14 @@ Search for terms which typically appear together with a target term (many option
 * `mean distance`: mean distance between the target terms and the found term
 </script>
 </section>
+
+<section data-markdown>
+<script type="text/template">
+<p><img height="550" data-src="img/1-4_Cooccurrences.jpg"></img>
+<p>Cooccurrences</p>
+</script>
+</section>
+
 
 
 </section>
@@ -160,10 +190,24 @@ Search for graphical word forms
 
 <section data-markdown>
 <script type="text/template">
+<p><img height="550" data-src="img/2-2-Word_Forms.jpg"></img>
+<p>Word Forms</p>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
 ## Lemmas
 Search for all terms which correspond to a specific lemma (base form)
 * `[enlemma="mouse"]` – finds all terms corresponding to the lemma "mouse" in its different forms: "mouse", "mice"
 * The label used is language dependent: `enlemma`, `pllemma`, `frlemma`, `eslemma`, etc.
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+<p><img height="550" data-src="img/2-3_Lemmas.jpg"></img>
+<p>Lemmas</p>
 </script>
 </section>
 
@@ -175,6 +219,20 @@ Search for all terms which belong to a certain grammatical category.
 * `[enpos="JJ"]` - finds any adjective: "other", "great", "little". 
 * Again, the label is language-dependent: `frpos`, `plpos`, etc.
 * The inventory of POS-Tags depends on the language model used by TreeTagger; see <http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+<p><img height="550" data-src="img/2-4_Lemmas.jpg"></img>
+<p>Part-of-Speech</p>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+<p><img height="550" data-src="img/2-5_Lemmas.jpg"></img>
+<p>Part-of-Speech</p>
 </script>
 </section>
 
@@ -199,6 +257,27 @@ It is possible to combine several search modes
 
 <section data-markdown>
 <script type="text/template">
+<p><img height="550" data-src="img/3-2_Sequence.jpg"></img>
+<p>Sequence Query Assistant</p>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+<p><img height="550" data-src="img/3-3_Sequence.jpg"></img>
+<p>Sequence Query Assistant</p>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+<p><img height="550" data-src="img/3-4_Sequence.jpg"></img>
+<p>Sequence Query Assistant</p>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
 ## Search terms in a certain distance
 Several search terms with a minimal (and maximal) distance between them:
 * `[enpos="VV"][]{0,5}[enlemma="money"]` - finds all combinations of a verb, followed by 0 to 5 words of any kind, followed by the lemma "money": for example, "take his money" and "add to the money" and "do to raise the money". </script>
@@ -206,9 +285,23 @@ Several search terms with a minimal (and maximal) distance between them:
 
 <section data-markdown>
 <script type="text/template">
+<p><img height="550" data-src="img/3-5_Search-Terms-in-a-Certain_Distance.jpg"></img>
+<p>Search Terms in a certain Distance</p>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
 ## Combination of criteria for one term
 Combines several criteria of different types for one single term, for example criteria concerning the word form and the grammatical category
 *  `[word="dog" & enpos="VV"]` - finds all terms which are written "dog" AND are a verb (to dog = to follow someone). This notably excludes all cases in which "dog" is a noun
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+<p><img height="550" data-src="img/3-6_Combination-of_Criteria.jpg"></img>
+<p>Combination of Criteria</p>
 </script>
 </section>
 
@@ -260,6 +353,20 @@ Combines several criteria of different types for one single term, for example cr
 
 <section data-markdown>
 <script type="text/template">
+<p><img height="550" data-src="img/4-1_Examples.jpg"></img>
+<p>Examples</p>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+<p><img height="550" data-src="img/4-2_Examples.jpg"></img>
+<p>Examples</p>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
 ## Alternatives and negation
 Find several search terms at a time (using the "|" pipe character)
 * `[word="city|village"]` - alternatives concerning word forms; finds all passages containing either "city" or "village"
@@ -269,6 +376,41 @@ Use groups together with alternatives
 Use negation to exclude certain results
 * `[enpos="NP" & word!="Holmes"]` - find all proper names except "Holmes". Compare with `[enpos="NP"]`
 
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+<p><img height="550" data-src="img/4-3_Alternatives.jpg"></img>
+<p>Alternatives</p>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+<p><img height="550" data-src="img/4-4_Alternatives.jpg"></img>
+<p>Alternatives</p>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+<p><img height="550" data-src="img/4-5_Alternatives.jpg"></img>
+<p>Alternatives</p>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+<p><img height="550" data-src="img/4-6_Alternatives.jpg"></img>
+<p>Alternatives</p>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+<p><img height="550" data-src="img/4-7_Alternatives.jpg"></img>
+<p>Alternatives</p>
 </script>
 </section>
 
@@ -294,6 +436,27 @@ Only a specific part of the corpus goes into the subcorpus
 
 <section data-markdown>
 <script type="text/template">
+<p><img height="550" data-src="img/5-1_Sub-Corpus.jpg"></img>
+<p>Sub-Corpus</p>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+<p><img height="550" data-src="img/5-2_Sub-Corpus.jpg"></img>
+<p>Sub-Corpus</p>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+<p><img height="550" data-src="img/5-3_Sub-Corpus.jpg"></img>
+<p>Sub-Corpus</p>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
 ## Partition a corpus
 Add an internal structure to the corpus based on metadata
 * Right-click on `DOYLE`, choose `partition` 
@@ -301,6 +464,13 @@ Add an internal structure to the corpus based on metadata
 * Stay in the `simple` tab and adapt the settings: structure="text", property="decade". Confirm.
 * The corpus will be automatically subdivided according to decade.
 * (Right-click on your partition and select `Dimensions` to find out about the proportions in your partition.)
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+<p><img height="550" data-src="img/5-4_Partition.jpg"></img>
+<p>Partition</p>
 </script>
 </section>
 
@@ -325,6 +495,27 @@ Add an internal structure to the corpus based on metadata
 
 <section data-markdown>
 <script type="text/template">
+<p><img height="550" data-src="img/6-1_Progression.jpg"></img>
+<p>Progression</p>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+<p><img height="550" data-src="img/6-2_Progression.jpg"></img>
+<p>Progression</p>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+<p><img height="550" data-src="img/6-3_Progression.jpg"></img>
+<p>Progression</p>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
 ## Specificities
 * Click on a partition, then right-click
 * Select `specificities` 
@@ -333,6 +524,19 @@ Add an internal structure to the corpus based on metadata
 </script>
 </section>
 
+<section data-markdown>
+<script type="text/template">
+<p><img height="550" data-src="img/6-4_Specificities.jpg"></img>
+<p>Specificities</p>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+<p><img height="550" data-src="img/6-5_Specificities.jpg"></img>
+<p>Specificities</p>
+</script>
+</section>
 
 </section>
 <section>
@@ -355,9 +559,30 @@ Add an internal structure to the corpus based on metadata
 
 <section data-markdown>
 <script type="text/template">
+<p><img height="550" data-src="img/7-1_Load.jpg"></img>
+<p>Load</p>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
 ## Import options
 * `Main language`: for linguistic annotation; make sure to select the right language (requirement: TreeTagger and relevant language parameter file)
 * `Metadata preview`: check if you have a metadata.csv file. One column needs to be called `id` with entries corresponding to the file names. 
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+<p><img height="550" data-src="img/7-2_Import.jpg"></img>
+<p>Import</p>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+<p><img height="550" data-src="img/7-3_Import.jpg"></img>
+<p>Import</p>
 </script>
 </section>
 
@@ -367,6 +592,13 @@ Add an internal structure to the corpus based on metadata
 * The results of any query can be exported as a CSV file (comma-separated values) - with some caveats (right-click on the table's entry, select `Export`)
 * Any graph can be exported as an SVG file (right-click on the graph's entry, select `Export`)
 * Any corpus you created can be exported as a binary TXM corpus for others to use (`File>Export binary corpus`)
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+<p><img height="550" data-src="img/7-4_Export.jpg"></img>
+<p>Export</p>
 </script>
 </section>
 
@@ -416,21 +648,21 @@ Add an internal structure to the corpus based on metadata
 // Full list of configuration options available at:
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
-	controls: true,
-	progress: true,
-	history: true,
-	center: true,
-	transition: 'slide', // none/fade/slide/convex/concave/zoom
-	// Optional reveal.js plugins
-	dependencies: [
-		{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-		{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-		{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-		{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-		{ src: 'plugin/zoom-js/zoom.js', async: true },
-		{ src: 'plugin/notes/notes.js', async: true }
-		]
-	});
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+    transition: 'slide', // none/fade/slide/convex/concave/zoom
+    // Optional reveal.js plugins
+    dependencies: [
+        { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+        { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+        { src: 'plugin/zoom-js/zoom.js', async: true },
+        { src: 'plugin/notes/notes.js', async: true }
+        ]
+    });
 </script>
 </body>
 </html>
